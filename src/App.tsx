@@ -5,21 +5,23 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './styles.css'
 
 import Header from "./components/Header";
-// import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import LogoutPage from "./pages/LogoutPage";
 
-function App() {
+export default function App() {
 
   return (
     <Container>
       <BrowserRouter>
         <Header />
         <Routes>
-          {/* <Route path="/login" element={<LoginPage />} /> */}
+          <Route path="/logout" element={<LogoutPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="*" element={<Navigate to="/"/>} />
         </Routes>
       </BrowserRouter>
     </Container>
   )
 }
-
-export default App

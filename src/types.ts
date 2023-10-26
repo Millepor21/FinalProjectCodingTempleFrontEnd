@@ -8,7 +8,7 @@ export type Manager = {
 export type Transaction = {
   readonly id?: string;
   amount?: string;
-  date: string;
+  readonly date?: string
   customer_name?: string;
   employee_id?: string;
 };
