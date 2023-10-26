@@ -16,3 +16,11 @@ export type LoggedUser = {
   token: string;
   username: string;
 };
+export type Employee = {
+  readonly id?: string;
+  username: string;
+  password: string;
+  first_name?: string;
+  last_name?: string;
+  manager_id?: string;
+}
