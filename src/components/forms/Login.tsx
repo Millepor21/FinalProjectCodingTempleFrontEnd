@@ -19,28 +19,34 @@ export default function Login() {
 
   function handleLoginData(e: FormEvent<HTMLElement>) {
     e.preventDefault();
+    console.log('in handle data');
     const loginInfo: Partial<Manager> = {
       username: usernameField.current!.value,
       password: passwordField.current!.value,
     };
     clearForm();
     loginUser(loginInfo);
+    console.log('through login user');
     navigate("/");
   }
 
   async function loginUser(loginInfo: Partial<Manager>) {
-    const res = await fetch("http://127.0.0.1:5000/login", {
+    console.log('in login user');
+    const res = await fetch("https://manager-dash-uof4.onrender.com/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(loginInfo),
     });
     if (res.ok) {
+      console.log('in res.ok');
       const data = await res.json();
       const accessToken = data.access_token;
+      console.log('before setUser');
       setUser({
-        token: accessToken,
         username: loginInfo.username ? loginInfo.username : "",
+        token: accessToken,
       });
+      console.log('after set user');
       localStorage.setItem("token", accessToken);
     } else window.alert("Failed Login");
   }

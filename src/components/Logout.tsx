@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Spinner from 'react-bootstrap/Spinner'
+import { Spinner } from 'react-bootstrap'
 import { UserContext } from '../contexts/UserProvider'
 
 

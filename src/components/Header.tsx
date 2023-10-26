@@ -1,9 +1,9 @@
-import Navbar from "react-bootstrap/Navbar";
+import { Navbar } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/esm/Container";
 import { NavLink } from "react-router-dom"
 
-function Header() {
+export default function Header() {
   return (
     <>
         <Navbar sticky="top" data-bs-theme="dark" className="header">
@@ -19,6 +19,4 @@ function Header() {
         </Navbar>
     </>
   )
-}
-
-export default Header
+} 

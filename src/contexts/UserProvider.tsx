@@ -1,4 +1,4 @@
-import { createContext, useState, Dispatch, SetStateAction } from 'react';
+import { createContext, useState, Dispatch, SetStateAction } from "react";
 import { LoggedUser } from '../types';
 
 interface UserContextValues {

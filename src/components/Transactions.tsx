@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 
 // import { Transaction } from "../types"
 
-function Transactions() {
+export default function Transactions() {
     const navigate = useNavigate();
 
     async function getTransactions() {
-        const res = await fetch("http://127.0.0.1:5000/transaction", {
+        const res = await fetch("https://manager-dash-uof4.onrender.com/transaction", {
             method : "GET",
             headers : {"Content-Type": "application/json"},
         })
@@ -19,7 +19,6 @@ function Transactions() {
 
     return (
         <button onClick={getTransactions} value="Get Transactions"/>
+        
     )
 }
-
-export default Transactions

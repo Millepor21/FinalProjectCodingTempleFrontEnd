@@ -19,7 +19,8 @@ export default function Register() {
 
   function handleRegistrationData(e: FormEvent<HTMLElement>) {
     e.preventDefault();
-    const registrationData: Manager = {
+    console.log('in handle data');
+    const registrationData: Partial<Manager> = {
       username: usernameField.current!.value,
       password: passwordField.current!.value,
       first_name: fNameField.current!.value,
@@ -27,20 +28,26 @@ export default function Register() {
     };
     clearForm();
     registerUser(registrationData);
-    navigate("/login");
+    navigate('/')
   }
 
-  async function registerUser(registrationData: Manager) {
-    const res = await fetch("http://127.0.0.1:5000/register", {
+  async function registerUser(registrationData: Partial<Manager>) {
+    console.log('in registration fetch');
+    console.log("Request Data:", JSON.stringify(registrationData));
+    const res = await fetch("https://manager-dash-uof4.onrender.com/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(registrationData),
     });
     if (res.ok) {
+      console.log('in res.ok');
       const data = await res.json();
       console.log(data);
       navigate("/login");
-    } else window.alert("Registration Failed");
+    } else {
+      console.log('res not good');
+      window.alert("Registration Failed");
+    }
   }
 
   function clearForm() {
@@ -53,13 +60,13 @@ export default function Register() {
   return (
     <form onSubmit={handleRegistrationData}>
       <label htmlFor="username">Username</label><br/>
-      <input type="text" name="username" ref={usernameField} required/><br/>
+      <input type="text" id="username" ref={usernameField} required/><br/>
       <label htmlFor="password">Password</label><br/>
-      <input type="text" name="password" ref={passwordField} required/><br/>
+      <input type="text" id="password" ref={passwordField} required/><br/>
       <label htmlFor="first_name">First Name</label><br/>
-      <input type="text" name="first_name" ref={fNameField} required/><br/>
+      <input type="text" id="first_name" ref={fNameField} required/><br/>
       <label htmlFor="last_name">Last Name</label><br/>
-      <input type="text" name="last_name" ref={lNameField} required/><br/>
+      <input type="text" id="last_name" ref={lNameField} required/><br/>
       <input type="submit" value="Register" />
     </form>
   );
