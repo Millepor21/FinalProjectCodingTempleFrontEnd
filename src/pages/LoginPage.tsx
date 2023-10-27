@@ -19,7 +19,7 @@ export default function LoginPage() {
     content = (
       <Body sidebar={false}>
         <UserProvider>
-          <h2>Manager:</h2>
+          <h2>Manager:</h2><br/>
           <Login />
         </UserProvider>
       </Body>
@@ -28,7 +28,7 @@ export default function LoginPage() {
     content = (
       <Body sidebar={false}>
         <UserProvider>
-          <h2>Employee:</h2>
+          <h2>Employee:</h2><br/>
           <LoginEmployee />
         </UserProvider>
       </Body>

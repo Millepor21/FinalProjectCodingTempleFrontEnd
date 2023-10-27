@@ -8,10 +8,10 @@ interface BodyProps {
 
 function Body( { sidebar, children }: BodyProps) {
   return (
-    <Container className="container_bod">
+    <Container>
         <Stack direction="horizontal">
             {sidebar && <Sidebar />}
-            <div className="child-container">{children}</div>
+            <Container className="child-container">{children}</Container>
         </Stack>
     </Container>
   )

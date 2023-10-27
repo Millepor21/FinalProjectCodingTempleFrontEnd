@@ -14,33 +14,26 @@ export default function Transactions() {
             return data
         } else window.alert("Request Failed")
     }
-
-    async function getTransactions() {
-        const transactions = await handleTransactions();
-        const listTransactions: JSX.Element = (<ul>
-            {
-            transactions!.map(
-                (transaction: Transaction) => (
-                    <li
-                    key={transaction.id}
-                    >{`Amount: ${transaction.amount} Date: ${transaction.date} Customer Name: ${transaction.customer_name} Employee Id: ${transaction.employee_id}`}</li>
-                )
-            )
-            }
-        </ul>)
-        return listTransactions
-    }
-    const [ state, setState ] = useState("none")
-    
-        if (state === "none"){
-            setState("show")
-        } else if (state === "show") {
-            setState("none")
+    let transactions:{};
+    let transactionArray:Transaction[] = []
+    function getTransactions():Transaction[]{
+        async()=>{
+        transactions = await handleTransactions()
+        let transaction: any
+        for(transaction in transactions){
+            transactionArray.push(transaction)
+        } 
         }
+    return transactionArray}
+    const transactionList = transactionArray.map(transaction =>(
+        <li key={transaction.id}>{`Customer Name: ${transaction.customer_name} Amount: ${transaction.amount} Date: ${transaction.date} Employee Id: ${transaction.employee_id}`}</li>
+    ))
+    const [ state, setState ] = useState("none")
     
     let content
     if (state === "show") {
-        content = getTransactions()
+        getTransactions()
+        content = transactionList
     } else {
         content = null
     }
@@ -55,7 +48,7 @@ export default function Transactions() {
                 } else if (state === "show") {
                     setState("none")
                 }
-            }} value="Get Transactions"/>
+            }} value="Get Transactions">Get Transactions</button>
             {content}
         </> 
         )

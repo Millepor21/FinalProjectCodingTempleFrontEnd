@@ -10,12 +10,13 @@ body {
     color: white;
 }
 .sidebar {
+    position: sticky;
     width: 120px;
     margin: 5px;
     top: 62px;
-    align-self: flex-start;
-    align-items: start;
+    left: 0px;
     row-gap: 5px;
+    border-right: 1px solid hotpink;
 }
 .register_choice {
     display: flex;
@@ -56,4 +57,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.child-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    padding-left: 30%;
+    padding-right: 30%;
+    text-align: justify;
 }
