@@ -6,7 +6,7 @@ import RegisterEmployee from "../components/forms/RegisterEmployee";
 
 export default function RegisterPage() {
 
-    const [state, setState] = useState("neither");
+    const [state, setState] = useState("null");
 
     const setManager = () => {
         setState("manager");

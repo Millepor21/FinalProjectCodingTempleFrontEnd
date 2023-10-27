@@ -9,20 +9,24 @@ import Header from "./components/Header";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import LogoutPage from "./pages/LogoutPage";
+import UserProvider from "./contexts/UserProvider";
 
 export default function App() {
-
-  const [ state, setState ] = useState("unlogged")
   
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setState("logged");
-    } else {
-      setState("unlogged");
-    }
-  }, []);
+  const [ state, setState ] = useState("null")
 
+  const token = localStorage.getItem("token")
   let content
+  useEffect(()=>{
+    if(token){
+      console.log("in logged")
+      setState("logged")
+    } else {
+      console.log("in unlogged")
+      setState("unlogged")
+  }
+  },[token])
+
   if (state === "logged"){
     content = (
     <Container>
@@ -49,12 +53,12 @@ export default function App() {
     </Container>
     )
   } else {
-    content = null
+    content = <div></div>
   }
 
   return (
-    <Container>
+    <UserProvider>
       {content}
-    </Container>
+    </UserProvider>
   )
 }

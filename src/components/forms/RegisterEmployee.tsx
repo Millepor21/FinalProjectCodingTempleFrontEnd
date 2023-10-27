@@ -83,11 +83,16 @@ export default function Register() {
   async function listManagers() {
     const managers = await getManagers();
     const listManagers: JSX.Element = (<ul>
-        {managers!.map((manager: Manager) => (
+        {
+        managers!.map(
+          (manager: Manager) => (
       <li
         key={manager.id}
       >{`Name: ${manager.first_name} ${manager.last_name}\nId: ${manager.id}`}</li>
-    ))}</ul>)
+    )
+    )
+    }
+    </ul>)
     return listManagers;
   }
   const [managersList, setManagersList] = useState<JSX.Element | null>(null);

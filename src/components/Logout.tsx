@@ -5,7 +5,7 @@ import { UserContext } from '../contexts/UserProvider'
 
 
 export default function Logout() {
-  const { setUser } = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
   const navigate = useNavigate()
 
   useEffect(()=>{
@@ -14,6 +14,9 @@ export default function Logout() {
     navigate('/')
   },[])
 
-
-  return <Spinner />
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      <Spinner />
+    </UserContext.Provider>
+  )
 }

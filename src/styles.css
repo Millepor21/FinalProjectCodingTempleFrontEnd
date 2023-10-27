@@ -30,6 +30,19 @@ body {
     padding: 12px;
     border-radius: 17px;
 }
+.login_choice {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 50px;
+    column-gap: 40px;
+}
+.login_button {
+    background-color: hotpink;
+    color: aliceblue;
+    padding: 12px;
+    border-radius: 17px;
+}
 .manager_list {
     margin-right: 50px;
 }

@@ -65,7 +65,7 @@ export default function Login() {
       <label htmlFor="password">Password</label>
       <br />
       <input type="text" name="password" ref={passwordField} required />
-      <br />
+      <br /><br/>
       <input type="submit" value="Login" />
     </form>
   );
