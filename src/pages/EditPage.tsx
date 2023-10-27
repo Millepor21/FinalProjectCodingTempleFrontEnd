@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Body from "../components/Body";
 import Edit from "../components/forms/Edit";
 import { Container } from "react-bootstrap";
 import EditEmployee from "../components/forms/EditEmployee";
@@ -18,17 +17,9 @@ export default function EditPage() {
 
     let content;
     if (state === "manager") {
-        content = (
-            <Body sidebar={false}>
-                <Edit/>
-            </Body>
-        );
+        content = <Edit/>
     } else if (state === "employee") {
-        content = (
-            <Body sidebar={false} >
-                <EditEmployee/>
-            </Body>
-        );
+        content = <EditEmployee/>
     } else {
         content = null;
     }
@@ -37,8 +28,8 @@ export default function EditPage() {
     return (
         <Container>
             <div className="register_choice">
-                <button onClick={setManager} className="register_button">Register as a manager</button>
-                <button onClick={setEmployee} className="register_button">Register as an employee</button>
+                <button onClick={setManager} className="register_button">Edit manager profile</button>
+                <button onClick={setEmployee} className="register_button">Edit employee profile</button>
             </div>
             {content}
         </Container>

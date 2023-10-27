@@ -9,15 +9,6 @@ body {
     background-color: black;
     color: white;
 }
-.sidebar {
-    position: sticky;
-    width: 120px;
-    margin: 5px;
-    top: 62px;
-    left: 0px;
-    row-gap: 5px;
-    border-right: 1px solid hotpink;
-}
 .register_choice {
     display: flex;
     justify-content: center;
@@ -45,18 +36,17 @@ body {
     border-radius: 17px;
 }
 .manager_list {
+    display: flex;
     margin-right: 50px;
+    justify-self: flex-start;
 }
 .manager_reg_form {
     display: flex;
     flex-direction: column;
-    align-self: center;
-    justify-self: center;
 }
-.container_bod {
+.employee_reg_form {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
 .child-container {
     display: flex;
@@ -65,4 +55,11 @@ body {
     padding-left: 30%;
     padding-right: 30%;
     text-align: justify;
+}
+.register_manager {
+    max-width: 50%;
+    margin-left: 25%;
+}
+.register_employee {
+    margin-left: 30%;
 }

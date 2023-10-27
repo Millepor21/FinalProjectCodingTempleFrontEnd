@@ -106,25 +106,20 @@ export default function Register() {
       <div className="manager_list">
         {managersList}
       </div>
-      <form onSubmit={handleRegistrationData}>
+      <form onSubmit={handleRegistrationData} className="employee_reg_form">
         <label htmlFor="username">Username</label>
-        <br />
         <input type="text" id="username" ref={usernameField} required />
         <br />
         <label htmlFor="password">Password</label>
-        <br />
         <input type="text" id="password" ref={passwordField} required />
         <br />
         <label htmlFor="first_name">First Name</label>
-        <br />
         <input type="text" id="first_name" ref={fNameField} required />
         <br />
         <label htmlFor="last_name">Last Name</label>
-        <br />
         <input type="text" id="last_name" ref={lNameField} required />
         <br />
         <label htmlFor="manager_id">Manager Id</label>
-        <br />
         <input type="text" id="manager_id" ref={managerIdField} required />
         <br />
         <input type="submit" value="Register" />

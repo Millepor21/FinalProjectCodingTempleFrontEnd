@@ -20,7 +20,7 @@ export default function App() {
   const [ state, setState ] = useState("null")
 
   const token = localStorage.getItem("token")
-  let content
+  // let content
   useEffect(()=>{
     if(token){
       console.log("in logged")
@@ -31,44 +31,65 @@ export default function App() {
   }
   },[token])
 
-  if (state === "logged"){
-    content = (
-    <Container>
-        <Header loggedin={true}/>
-        <BrowserRouter>    
-            <Routes>
+  // if (state === "logged"){
+  //   content = (
+  //   <Container>
+  //       <Header loggedin={true}/>
+  //       <BrowserRouter>  
+  //         <Routes>
+  //           <Route path="/logout" element={<LogoutPage />} />
+  //           <Route path="/transaction" element={<Transactions />} />
+  //           <Route path="/employee" element={<Employees />} />
+  //           <Route path="/manager" element={<ManagerAccount />} />
+  //           <Route path="/" element={<Dashboard />} />
+  //           <Route path="*" element={<Navigate to="/"/>} />
+  //         </Routes>
+  //       </BrowserRouter>
+  //   </Container>
+  //   )
+  // } else if (state === "unlogged"){
+  //   content = (
+  //   <Container>
+  //       <Header loggedin={false}/>
+  //       <BrowserRouter>
+  //           <Routes>
+  //               <Route path="/register" element={<RegisterPage />} />
+  //               <Route path="/login" element={<LoginPage />} />
+  //               <Route path="/" element={<Dashboard />} />
+  //               <Route path="*" element={<Navigate to="/"/>} />
+  //           </Routes>
+  //       </BrowserRouter>
+  //   </Container>
+  //   )
+  // } else {
+  //   content = <div></div>
+  // }
+
+  return (
+    <BrowserRouter>
+      <UserProvider>
+        <Container>
+          <Header loggedin={state === "logged"} />
+          <Routes>
+            {state === "logged" && (
+              <>
                 <Route path="/logout" element={<LogoutPage />} />
                 <Route path="/transaction" element={<Transactions />} />
                 <Route path="/employee" element={<Employees />} />
                 <Route path="/manager" element={<ManagerAccount />} />
-                <Route path="/" element={<Dashboard />} />
-                <Route path="*" element={<Navigate to="/"/>} />
-            </Routes>
-        </BrowserRouter>
-        <Transactions />
-    </Container>
-    )
-  } else if (state === "unlogged"){
-    content = (
-    <Container>
-        <Header loggedin={false}/>
-        <BrowserRouter>
-            <Routes>
+              </>
+            )}
+            {state === "unlogged" && (
+              <>
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
-                <Route path="/" element={<Dashboard />} />
-                <Route path="*" element={<Navigate to="/"/>} />
-            </Routes>
-        </BrowserRouter>
-    </Container>
-    )
-  } else {
-    content = <div></div>
-  }
-
-  return (
-    <UserProvider>
-      {content}
-    </UserProvider>
+              </>
+            )}
+            <Route path="/" element={<Dashboard />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </Container>
+      </UserProvider>
+    </BrowserRouter>
   )
 }

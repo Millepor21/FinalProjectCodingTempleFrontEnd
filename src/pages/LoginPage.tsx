@@ -1,5 +1,4 @@
 import { useState } from "react"
-import Body from "../components/Body"
 import Login from "../components/forms/Login"
 import UserProvider from "../contexts/UserProvider"
 import { Container } from "react-bootstrap"
@@ -17,21 +16,17 @@ export default function LoginPage() {
   let content;
   if(state === "manager"){
     content = (
-      <Body sidebar={false}>
         <UserProvider>
           <h2>Manager:</h2><br/>
           <Login />
         </UserProvider>
-      </Body>
     );
   } else if (state === "employee"){
     content = (
-      <Body sidebar={false}>
         <UserProvider>
           <h2>Employee:</h2><br/>
           <LoginEmployee />
         </UserProvider>
-      </Body>
     );
   } else {
     content = null

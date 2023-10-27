@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Body from "../components/Body";
 import Register from "../components/forms/Register";
 import { Container } from "react-bootstrap";
 import RegisterEmployee from "../components/forms/RegisterEmployee";
@@ -19,16 +18,16 @@ export default function RegisterPage() {
     let content;
     if (state === "manager") {
         content = (
-            <Body sidebar={false}>
-                <Register/>
-            </Body>
-        );
+        <Container className="register_manager">
+            <Register/>
+        </Container>
+        )
     } else if (state === "employee") {
         content = (
-            <Body sidebar={false} >
-                <RegisterEmployee/>
-            </Body>
-        );
+        <Container className="register_employee">
+            <RegisterEmployee/>
+        </Container>
+        )
     } else {
         content = null;
     }
