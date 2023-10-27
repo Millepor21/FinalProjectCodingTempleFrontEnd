@@ -1,7 +1,8 @@
-import { useRef, FormEvent, useEffect } from "react";
+import { useRef, FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Employee, Manager } from "../../types";
+import { Stack } from "react-bootstrap";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -30,7 +31,6 @@ export default function Register() {
     };
     clearForm();
     registerEmployee(registrationData);
-    navigate("/");
   }
 
   async function registerEmployee(registrationData: Partial<Employee>) {
@@ -82,19 +82,25 @@ export default function Register() {
 
   async function listManagers() {
     const managers = await getManagers();
-    const listManagers: JSX.Element[] = managers!.map((manager: Manager) => (
+    const listManagers: JSX.Element = (<ul>
+        {managers!.map((manager: Manager) => (
       <li
         key={manager.id}
-      >{`Manager Name: ${manager.first_name} ${manager.last_name}\nId: ${manager.id}`}</li>
-    ));
+      >{`Name: ${manager.first_name} ${manager.last_name}\nId: ${manager.id}`}</li>
+    ))}</ul>)
     return listManagers;
   }
-
+  const [managersList, setManagersList] = useState<JSX.Element | null>(null);
+  useEffect(() => {
+    listManagers().then((managers) => {
+      setManagersList(managers)
+    });
+  }, []);
   return (
-    <>
-      <form onSubmit={listManagers}>
-        <input type="submit" value="View Manager List" />
-      </form><br/>
+    <Stack direction="horizontal">
+      <div className="manager_list">
+        {managersList}
+      </div>
       <form onSubmit={handleRegistrationData}>
         <label htmlFor="username">Username</label>
         <br />
@@ -118,6 +124,6 @@ export default function Register() {
         <br />
         <input type="submit" value="Register" />
       </form>
-    </>
-  );
+    </Stack>
+  )
 }

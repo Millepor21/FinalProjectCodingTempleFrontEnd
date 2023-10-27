@@ -58,7 +58,7 @@ export default function Register() {
   }
 
   return (
-    <form onSubmit={handleRegistrationData}>
+    <form onSubmit={handleRegistrationData} className="manager_reg_form">
       <label htmlFor="username">Username</label><br/>
       <input type="text" id="username" ref={usernameField} required/><br/>
       <label htmlFor="password">Password</label><br/>

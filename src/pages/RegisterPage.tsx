@@ -36,8 +36,10 @@ export default function RegisterPage() {
 
     return (
         <Container>
-            <button onClick={setManager}>Register as a manager</button>
-            <button onClick={setEmployee}>Register as an employee</button>
+            <div className="register_choice">
+                <button onClick={setManager} className="register_button">Register as a manager</button>
+                <button onClick={setEmployee} className="register_button">Register as an employee</button>
+            </div>
             {content}
         </Container>
     )
