@@ -10,7 +10,7 @@ export default function ManagerAccount() {
             method: "GET",
             headers: { 
                 "Content-Type": "application/json",
-                "Authentication":`Bearer ${localStorage.getItem("token")}`
+                "Authorization":`Bearer ${localStorage.getItem("token")}`
             }
         })
         if (res.ok) {
@@ -23,6 +23,12 @@ export default function ManagerAccount() {
     
     }
     var content;
+    // useEffect(() => {
+    //     async function fetchData() {
+    //         await findManager();
+    //     }
+    //     fetchData();
+    // }, []);
     if (result.length > 0){const resultFindManager: Manager[] = result
     if(resultFindManager){
         const yourInfo: Manager = resultFindManager[0]

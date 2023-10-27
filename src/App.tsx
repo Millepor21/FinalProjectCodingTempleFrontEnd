@@ -6,8 +6,14 @@ import './styles.css'
 
 import Header from "./components/Header";
 import UserProvider from "./contexts/UserProvider";
-import Body from "./components/Body";
 import Transactions from "./components/Transactions";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import LogoutPage from "./pages/LogoutPage";
+import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
+import Employees from "./components/Employees";
+import ManagerAccount from "./components/ManagerAccount";
+import Dashboard from "./components/Dashboard";
 
 export default function App() {
   
@@ -29,15 +35,31 @@ export default function App() {
     content = (
     <Container>
         <Header loggedin={true}/>
-        <Body sidebar={true}>
-          <Transactions />
-        </Body>
+        <BrowserRouter>    
+            <Routes>
+                <Route path="/logout" element={<LogoutPage />} />
+                <Route path="/transaction" element={<Transactions />} />
+                <Route path="/employee" element={<Employees />} />
+                <Route path="/manager" element={<ManagerAccount />} />
+                <Route path="/" element={<Dashboard />} />
+                <Route path="*" element={<Navigate to="/"/>} />
+            </Routes>
+        </BrowserRouter>
+        <Transactions />
     </Container>
     )
   } else if (state === "unlogged"){
     content = (
     <Container>
         <Header loggedin={false}/>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/" element={<Dashboard />} />
+                <Route path="*" element={<Navigate to="/"/>} />
+            </Routes>
+        </BrowserRouter>
     </Container>
     )
   } else {

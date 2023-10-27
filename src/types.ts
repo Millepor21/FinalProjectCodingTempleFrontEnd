@@ -24,3 +24,12 @@ export type Employee = {
   last_name?: string;
   manager_id?: string;
 }
+export type UpdateUser = {
+  readonly id?: string;
+  username: string;
+  password: string;
+  new_username?: string;
+  new_password?: string;
+  first_name?: string;
+  last_name?: string;
+}
