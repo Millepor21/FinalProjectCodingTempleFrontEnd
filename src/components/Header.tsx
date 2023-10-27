@@ -12,13 +12,22 @@ export default function Header( { loggedin }: HeaderProp) {
     <>
 {
         loggedin ? 
-            <Container>
+            <Container fluid>
                 <Navbar sticky="top" data-bs-theme="dark" className="header">
                     <Container>
                         <Navbar.Brand as={NavLink} to="/">Dashboard</Navbar.Brand>
                     </Container>
                     <Nav.Item>
                         <Nav.Link as={NavLink} to="/logout">Logout</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item> 
+                        <Nav.Link as={NavLink} to="/transaction">Transactions</Nav.Link>
+                    </Nav.Item>    
+                    <Nav.Item> 
+                        <Nav.Link as={NavLink} to="/employee">Employees</Nav.Link>
+                    </Nav.Item> 
+                    <Nav.Item>
+                        <Nav.Link as={NavLink} to="/manager">Profile</Nav.Link>
                     </Nav.Item>
                 </Navbar>
             </Container>

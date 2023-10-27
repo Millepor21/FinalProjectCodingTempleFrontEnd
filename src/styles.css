@@ -3,6 +3,7 @@
     padding-right: 15px;
     border-bottom: 1px solid hotpink;
     border-right: 1px solid hotpink;
+    border-left: 1px solid hotpink;
     background-color: black;
 }
 body {
@@ -62,4 +63,29 @@ body {
 }
 .register_employee {
     margin-left: 30%;
+}
+.employee_log_form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+.manager_log_form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+.login_container {
+    display: grid;
+}
+.dash {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin-top: 5%; 
 }
