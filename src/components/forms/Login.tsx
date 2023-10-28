@@ -1,4 +1,4 @@
-import { useRef, FormEvent, useEffect, useContext } from "react";
+import { useRef, FormEvent, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Manager } from "../../types";
@@ -6,28 +6,23 @@ import { UserContext } from "../../contexts/UserProvider";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+  console.log(user);
 
   const usernameField = useRef<HTMLInputElement>(null);
   const passwordField = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      navigate("/");
-    }
-  }, []);
-
-  function handleLoginData(e: FormEvent<HTMLElement>) {
+  
+  async function handleLoginData(e: FormEvent<HTMLElement>) {
     e.preventDefault();
     console.log('in handle data');
     const loginInfo: Partial<Manager> = {
       username: usernameField.current!.value,
       password: passwordField.current!.value,
     };
+    await loginUser(loginInfo);
     clearForm();
-    loginUser(loginInfo);
     console.log('through login user');
-    navigate("/");
+    navigate("/")
   }
 
   async function loginUser(loginInfo: Partial<Manager>) {
@@ -41,13 +36,14 @@ export default function Login() {
       console.log('in res.ok');
       const data = await res.json();
       const accessToken = data.access_token;
-      console.log('before setUser');
+      console.log(loginInfo.username, accessToken,"before set user");
       setUser({
         username: loginInfo.username ? loginInfo.username : "",
         token: accessToken,
       });
-      console.log('after set user');
       localStorage.setItem("token", accessToken);
+      localStorage.setItem("username",loginInfo.username as string)
+      console.log('after set user');
     } else window.alert("Failed Login");
   }
 

@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Edit from "../components/forms/Edit";
 import { Container } from "react-bootstrap";
 import EditEmployee from "../components/forms/EditEmployee";
+import { useNavigate } from "react-router-dom";
 
 export default function EditPage() {
+
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        if(!localStorage.getItem("token")){
+        navigate("/")
+        }
+    })
 
     const [state, setState] = useState("null");
 

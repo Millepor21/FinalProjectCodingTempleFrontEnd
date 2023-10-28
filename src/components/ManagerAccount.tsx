@@ -1,8 +1,22 @@
 
 import { useEffect } from "react";
 import { Manager } from "../types"
+import { useNavigate } from "react-router-dom";
 
 export default function ManagerAccount() {
+
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        if(!localStorage.getItem("token")){
+        navigate("/")
+        } else {
+            async function fetchData() {
+                await findManager();
+            }
+            fetchData();
+        }
+    })
 
     let result:Manager[] = []
     async function findManager() {
@@ -24,12 +38,6 @@ export default function ManagerAccount() {
     
     }
     var content;
-    useEffect(() => {
-        async function fetchData() {
-            await findManager();
-        }
-        fetchData();
-    }, []);
     if (result.length > 0){const resultFindManager: Manager[] = result
     if(resultFindManager){
         const yourInfo: Manager = resultFindManager[0]

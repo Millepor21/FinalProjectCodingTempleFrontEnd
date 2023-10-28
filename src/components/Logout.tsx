@@ -9,14 +9,13 @@ export default function Logout() {
   const navigate = useNavigate()
 
   useEffect(()=>{
+    console.log('from logout');
     localStorage.clear()
     setUser({username: '', token: ''})
     navigate('/')
   },[])
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
       <Spinner />
-    </UserContext.Provider>
   )
 }

@@ -2,16 +2,27 @@ import { Navbar } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/esm/Container";
 import { NavLink } from "react-router-dom"
+import { UserContext } from "../contexts/UserProvider";
+import { useContext, useEffect } from "react";
 
-interface HeaderProp {
-    loggedin: boolean
-}
 
-export default function Header( { loggedin }: HeaderProp) {
+export default function Header() {
+
+    const { user, setUser } = useContext(UserContext)
+    console.log(user);
+    useEffect(()=>{
+        if (!user.token && localStorage.getItem("token")){
+            setUser({
+                username: localStorage.getItem("username")!,
+                token: localStorage.getItem("token")!
+            })
+        }
+    },[user])
+
   return (
     <>
 {
-        loggedin ? 
+        localStorage.getItem("token") ? 
             <Container fluid>
                 <Navbar sticky="top" data-bs-theme="dark" className="header">
                     <Container>

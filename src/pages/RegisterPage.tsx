@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Register from "../components/forms/Register";
 import { Container } from "react-bootstrap";
 import RegisterEmployee from "../components/forms/RegisterEmployee";
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterPage() {
 
     const [state, setState] = useState("null");
+    const navigate = useNavigate()
+        useEffect(()=>{
+        if(localStorage.getItem("token")){
+          navigate("/")
+        }
+      })
 
     const setManager = () => {
         setState("manager");

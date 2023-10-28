@@ -1,9 +1,18 @@
 
 import { Container } from "react-bootstrap";
 import { Employee } from "../../types"
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Employees() {
+
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        if(!localStorage.getItem("token")){
+        navigate("/")
+        }
+    })
 
     async function handleEmployees() {
         const res = await fetch("https://manager-dash-uof4.onrender.com/employee", {
