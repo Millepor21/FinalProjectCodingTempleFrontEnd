@@ -48,7 +48,7 @@ export default function Transactions() {
                 } else if (state === "show") {
                     setState("none")
                 }
-            }} value="Get Transactions">Get Transactions</button>
+            }} className="transaction_button">Get Transactions</button>
             {content}
         </> 
         )

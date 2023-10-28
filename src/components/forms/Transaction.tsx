@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Transaction } from "../../types";
 
-export default function Transaction() {
+export default function CreateTransaction() {
   const navigate = useNavigate();
 
   const amountField = useRef<HTMLInputElement>(null);
@@ -46,11 +46,11 @@ export default function Transaction() {
 
   return (
     <form onSubmit={handleTransactionData}>
-      <label htmlFor="amount"></label><br/>
+      <label htmlFor="amount">Amount</label><br/>
       <input type="text" name="amount" ref={amountField} required/><br/>
-      <label htmlFor="customerName"></label><br/>
+      <label htmlFor="customerName">Customer Name</label><br/>
       <input type="text" name="customerName" ref={customerNameField} required/><br/>
-      <label htmlFor="employeeId"></label><br/>
+      <label htmlFor="employeeId">Employee Id</label><br/>
       <input type="text" name="employeeId" ref={employeeIdField} required/><br/>
       <input type="submit" value="create"/>
     </form>

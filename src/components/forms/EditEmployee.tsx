@@ -1,4 +1,4 @@
-import { useRef, FormEvent, useEffect } from "react";
+import { useRef, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { UpdateUser } from "../../types";
@@ -13,12 +13,6 @@ export default function EditEmployee() {
   const fNameField = useRef<HTMLInputElement>(null);
   const lNameField = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      navigate("/");
-    }
-  }, []);
-
   function handleEditData(e: FormEvent<HTMLElement>) {
     e.preventDefault();
     console.log('in handle data');
@@ -31,11 +25,11 @@ export default function EditEmployee() {
       last_name: lNameField.current?.value,
     };
     clearForm();
-    registerUser(editData);
+    editUser(editData);
     navigate('/')
   }
 
-  async function registerUser(editData: Partial<UpdateUser>) {
+  async function editUser(editData: Partial<UpdateUser>) {
     console.log('in registration fetch');
     console.log("Request Data:", JSON.stringify(editData));
     const res = await fetch("https://manager-dash-uof4.onrender.com/employee", {
@@ -65,7 +59,7 @@ export default function EditEmployee() {
   }
 
   return (
-    <form onSubmit={handleEditData} className="manager_reg_form">
+    <form onSubmit={handleEditData} className="manager_edit_form">
       <label htmlFor="username">Username</label>
       <input type="text" id="username" ref={usernameField} required/><br/>
       <label htmlFor="password">Password</label>
@@ -78,7 +72,7 @@ export default function EditEmployee() {
       <input type="text" id="first_name" ref={fNameField} /><br/>
       <label htmlFor="last_name">Last Name</label>
       <input type="text" id="last_name" ref={lNameField} /><br/><br/>
-      <input type="submit" value="Register" />
+      <input type="submit" value="Edit" />
     </form>
   );
 }

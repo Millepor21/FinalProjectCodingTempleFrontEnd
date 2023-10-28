@@ -6,7 +6,6 @@ import './styles.css'
 
 import Header from "./components/Header";
 import UserProvider from "./contexts/UserProvider";
-import Transactions from "./components/Transactions";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import LogoutPage from "./pages/LogoutPage";
 import RegisterPage from "./pages/RegisterPage";
@@ -14,6 +13,9 @@ import LoginPage from "./pages/LoginPage";
 import Employees from "./components/Employees";
 import ManagerAccount from "./components/ManagerAccount";
 import Dashboard from "./components/Dashboard";
+import EditPage from "./pages/EditPage";
+import TransactionPage from "./pages/TransactionPage";
+import Employee from "./components/forms/Employee";
 
 export default function App() {
   
@@ -74,9 +76,10 @@ export default function App() {
             {state === "logged" && (
               <>
                 <Route path="/logout" element={<LogoutPage />} />
-                <Route path="/transaction" element={<Transactions />} />
-                <Route path="/employee" element={<Employees />} />
+                <Route path="/transaction" element={<TransactionPage />} />
+                <Route path="/employee" element={<Employee />} />
                 <Route path="/manager" element={<ManagerAccount />} />
+                <Route path="/edit" element={<EditPage />} />
               </>
             )}
             {state === "unlogged" && (

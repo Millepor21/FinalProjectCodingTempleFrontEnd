@@ -29,6 +29,9 @@ export default function Header( { loggedin }: HeaderProp) {
                     <Nav.Item>
                         <Nav.Link as={NavLink} to="/manager">Profile</Nav.Link>
                     </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link as={NavLink} to="/edit">Edit</Nav.Link>
+                    </Nav.Item>
                 </Navbar>
             </Container>
         :

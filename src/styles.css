@@ -89,3 +89,74 @@ body {
     align-content: center;
     margin-top: 5%; 
 }
+.manager_edit_form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+.employee_edit_form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+.edit_employee {
+    max-width: 50%;
+    margin-left: 25%;
+}
+.edit_manager {
+    max-width: 50%;
+    margin-left: 25%;
+}
+.transaction_choice {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 50px;
+    column-gap: 40px;
+}
+.transactions_button {
+    background-color: hotpink;
+    color: aliceblue;
+    padding: 12px;
+    border-radius: 17px;
+}
+.transaction {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+.transactions {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+.employees_button {
+    background-color: hotpink;
+    color: aliceblue;
+    padding: 12px;
+    border-radius: 17px;
+}
+.show_employees {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    margin: 50px;
+    column-gap: 40px;
+    width: 50%;
+}
+.transaction_button {
+    background-color: hotpink;
+    color: aliceblue;
+    padding: 12px;
+    border-radius: 17px;
+    width: 50%;
+}

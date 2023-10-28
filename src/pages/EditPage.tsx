@@ -17,9 +17,18 @@ export default function EditPage() {
 
     let content;
     if (state === "manager") {
-        content = <Edit/>
+        content = (
+        <Container className="edit_manager">
+            <Edit/>
+        </Container>
+        
+        )
     } else if (state === "employee") {
-        content = <EditEmployee/>
+        content = (
+        <Container className="edit_employee">
+            <EditEmployee/>
+        </Container>
+        )
     } else {
         content = null;
     }
