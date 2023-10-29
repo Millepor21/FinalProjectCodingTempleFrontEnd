@@ -22,7 +22,7 @@ export default function Header() {
   return (
     <>
 {
-        localStorage.getItem("token") ? 
+        user.token ? 
             <Container fluid>
                 <Navbar sticky="top" data-bs-theme="dark" className="header">
                     <Container>

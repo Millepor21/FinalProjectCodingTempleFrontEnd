@@ -19,7 +19,7 @@ export default function Register() {
     }
   }, []);
 
-  function handleRegistrationData(e: FormEvent<HTMLElement>) {
+  async function handleRegistrationData(e: FormEvent<HTMLElement>) {
     e.preventDefault();
     console.log("in handle data");
     const registrationData: Partial<Employee> = {
@@ -30,7 +30,7 @@ export default function Register() {
       manager_id: managerIdField.current!.value,
     };
     clearForm();
-    registerEmployee(registrationData);
+    await registerEmployee(registrationData);
   }
 
   async function registerEmployee(registrationData: Partial<Employee>) {

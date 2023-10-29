@@ -1,18 +1,15 @@
 
 import { Container } from "react-bootstrap";
-import { Employee } from "../../types"
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Employee } from "../types"
+import { useEffect } from "react";
 
 export default function Employees() {
 
-    const navigate = useNavigate()
 
     useEffect(()=>{
-        if(!localStorage.getItem("token")){
-        navigate("/")
-        }
-    })
+        getEmployees()
+    },[])
+
 
     async function handleEmployees() {
         const res = await fetch("https://manager-dash-uof4.onrender.com/employee", {
@@ -33,28 +30,14 @@ export default function Employees() {
     const transactionList = employees.map((employee: Employee) =>(
         <li key={employee.id}>{`Name: ${employee.first_name} ${employee.last_name} Username: ${employee.username} ID: ${employee.id} Manager Id: ${employee.manager_id}`}</li>
     ))
-    const [ state, setState ] = useState("none")
-    
-    let content
-    if (state === "show") {
-        getEmployees()
-        content = transactionList
-    } else {
-        content = null
-    }
 
     
 
     return (
         <Container className="show_employees">
-            <button onClick={()=>{
-                if (state === "none"){
-                    setState("show")
-                } else if (state === "show") {
-                    setState("none")
-                }
-            }} className="employees_button">Get Employees</button>
-            {content}
+            <ul>
+                {transactionList}
+            </ul>
         </Container> 
         )
 }

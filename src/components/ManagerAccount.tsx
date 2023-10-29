@@ -6,17 +6,18 @@ import { useNavigate } from "react-router-dom";
 export default function ManagerAccount() {
 
     const navigate = useNavigate()
+    async function fetchData() {
+        await findManager();
+    }
 
     useEffect(()=>{
         if(!localStorage.getItem("token")){
         navigate("/")
         } else {
-            async function fetchData() {
-                await findManager();
-            }
             fetchData();
+            }
         }
-    })
+    )
 
     let result:Manager[] = []
     async function findManager() {
@@ -25,9 +26,10 @@ export default function ManagerAccount() {
             method: "GET",
             headers: { 
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${localStorage.getItem("token")}`
-            }
+                "Authorization": `Bearer ${localStorage.getItem("token")}`,
+            },
         })
+        console.log("through request");
         if (res.ok) {
             const data: Manager = await res.json()
             console.log(data);
@@ -44,8 +46,8 @@ export default function ManagerAccount() {
         content = <h3>{`Name: ${yourInfo.first_name} ${yourInfo.last_name}\nUsername: ${yourInfo.username}\nID: ${yourInfo.id}`}</h3>
     }}
   return (
-    <>
+    <div>
         {content}
-    </>
+    </div>
   )
 }

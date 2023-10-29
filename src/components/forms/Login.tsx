@@ -1,4 +1,4 @@
-import { useRef, FormEvent, useContext, useEffect } from "react";
+import { useRef, FormEvent, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Manager } from "../../types";
@@ -60,7 +60,7 @@ export default function Login() {
       <br />
       <label htmlFor="password">Password</label>
       <br />
-      <input type="text" name="password" ref={passwordField} required />
+      <input type="password" name="password" ref={passwordField} required />
       <br /><br/>
       <input type="submit" value="Login" />
     </form>

@@ -8,14 +8,12 @@ export default function CreateTransaction() {
 
   const amountField = useRef<HTMLInputElement>(null);
   const customerNameField = useRef<HTMLInputElement>(null);
-  const employeeIdField = useRef<HTMLInputElement>(null);
 
   function handleTransactionData(e: FormEvent<HTMLElement>) {
     e.preventDefault();
     const transactionData: Transaction = {
       amount: amountField.current!.value,
       customer_name: customerNameField.current!.value,
-      employee_id: employeeIdField.current!.value,
     };
     clearForm();
     createTransaction(transactionData);
@@ -40,8 +38,7 @@ export default function CreateTransaction() {
 
   function clearForm() {
     (amountField.current!.value = ""),
-      (customerNameField.current!.value = ""),
-      (employeeIdField.current!.value = "");
+      (customerNameField.current!.value = "")
   }
 
   return (
@@ -50,8 +47,6 @@ export default function CreateTransaction() {
       <input type="text" name="amount" ref={amountField} required/><br/>
       <label htmlFor="customerName">Customer Name</label><br/>
       <input type="text" name="customerName" ref={customerNameField} required/><br/>
-      <label htmlFor="employeeId">Employee Id</label><br/>
-      <input type="text" name="employeeId" ref={employeeIdField} required/><br/>
       <input type="submit" value="create"/>
     </form>
   );

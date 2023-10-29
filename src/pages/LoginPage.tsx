@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import Login from "../components/forms/Login"
-import UserProvider from "../contexts/UserProvider"
 import { Container } from "react-bootstrap"
 import LoginEmployee from "../components/forms/LoginEmployee"
 import { useNavigate } from "react-router-dom"

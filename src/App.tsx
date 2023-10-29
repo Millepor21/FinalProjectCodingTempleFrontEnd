@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -10,12 +10,11 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import LogoutPage from "./pages/LogoutPage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
-import Employees from "./components/Employees";
 import ManagerAccount from "./components/ManagerAccount";
 import Dashboard from "./components/Dashboard";
 import EditPage from "./pages/EditPage";
 import TransactionPage from "./pages/TransactionPage";
-import Employee from "./components/forms/Employee";
+import Employee from "./components/Employee";
 
 export default function App() {
   
