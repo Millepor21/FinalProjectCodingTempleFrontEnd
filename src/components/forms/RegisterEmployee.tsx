@@ -31,6 +31,7 @@ export default function Register() {
     };
     clearForm();
     await registerEmployee(registrationData);
+    navigate('/')
   }
 
   async function registerEmployee(registrationData: Partial<Employee>) {

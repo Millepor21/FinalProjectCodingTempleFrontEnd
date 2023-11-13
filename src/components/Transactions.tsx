@@ -1,10 +1,13 @@
 
 import { Transaction } from "../types"
-import { useState } from "react";
+import { useEffect } from "react";
+
 
 export default function Transactions() {
+    
+    
 
-    async function handleTransactions() {
+    async function getTransactions() {
         const res = await fetch("http://127.0.0.1:5000/transaction", {
             method : "GET",
             headers : {"Content-Type": "application/json"},
@@ -14,42 +17,18 @@ export default function Transactions() {
             return data
         } else window.alert("Request Failed")
     }
-    let transactions:{};
-    let transactionArray:Transaction[] = []
-    function getTransactions():Transaction[]{
-        async()=>{
-        transactions = await handleTransactions()
-        let transaction: any
-        for(transaction in transactions){
-            transactionArray.push(transaction)
-        } 
+    function ulCreator(array:Transaction[]){
+        const ul = document.createElement('ul')
+        document.body.appendChild(ul)
+        for(let i=0; i<array.length;i++){
+            const li = document.createElement('li')
+            li.innerHTML = `<li id=${array[i].id}>Name: ${array[i].customer_name}</li>`
         }
-    return transactionArray}
-    const transactionList = transactionArray.map(transaction =>(
-        <li key={transaction.id}>{`Customer Name: ${transaction.customer_name} Amount: ${transaction.amount} Date: ${transaction.date} Employee Id: ${transaction.employee_id}`}</li>
-    ))
-    const [ state, setState ] = useState("none")
-    
-    let content
-    if (state === "show") {
-        getTransactions()
-        content = transactionList
-    } else {
-        content = null
     }
 
     
-
     return (
-        <>
-            <button onClick={()=>{
-                if (state === "none"){
-                    setState("show")
-                } else if (state === "show") {
-                    setState("none")
-                }
-            }} className="transaction_button">Get Transactions</button>
-            {content}
-        </> 
+        <div>
+        </div> 
         )
 }
