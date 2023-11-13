@@ -32,7 +32,7 @@ export default function Login() {
 
   async function loginUser(loginInfo: Partial<Employee>) {
     console.log('in login user');
-    const res = await fetch("https://manager-dash-uof4.onrender.com/login_employee", {
+    const res = await fetch("http://127.0.0.1:5000/login_employee", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(loginInfo),

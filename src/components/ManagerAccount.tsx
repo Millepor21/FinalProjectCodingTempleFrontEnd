@@ -22,7 +22,7 @@ export default function ManagerAccount() {
     let result:Manager[] = []
     async function findManager() {
         console.log('in findManager');
-        const res = await fetch("https://manager-dash-uof4.onrender.com/manager/account", {
+        const res = await fetch("http://127.0.0.1:5000/manager/account", {
             method: "GET",
             headers: { 
                 "Content-Type": "application/json",

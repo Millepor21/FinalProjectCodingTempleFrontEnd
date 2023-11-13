@@ -21,7 +21,7 @@ export default function Employees() {
 
   async function searchEmployee(employeeChoice: string) {
     const res = await fetch(
-      `https://manager-dash-uof4.onrender.com/employee/${employeeChoice}`,
+      `http://127.0.0.1:5000/employee/${employeeChoice}`,
       {
         method: "GET",
         headers: { "Content-Type": "application/json" },

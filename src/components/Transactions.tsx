@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function Transactions() {
 
     async function handleTransactions() {
-        const res = await fetch("https://manager-dash-uof4.onrender.com/transaction", {
+        const res = await fetch("http://127.0.0.1:5000/transaction", {
             method : "GET",
             headers : {"Content-Type": "application/json"},
         })

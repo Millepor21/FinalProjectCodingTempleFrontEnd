@@ -32,7 +32,7 @@ export default function EditEmployee() {
   async function editUser(editData: Partial<UpdateUser>) {
     console.log('in registration fetch');
     console.log("Request Data:", JSON.stringify(editData));
-    const res = await fetch("https://manager-dash-uof4.onrender.com/employee", {
+    const res = await fetch("http://127.0.0.1:5000/employee", {
       method: "PUT",
       headers: { 
         "Content-Type": "application/json",
