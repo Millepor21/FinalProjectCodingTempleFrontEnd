@@ -74,25 +74,27 @@ export const Table = <T extends object>({
       </div>
       <div>
         <button
+          className="table_button"
           onClick={() => table.setPageIndex(0)}
           disabled={!table.getCanPreviousPage()}
-          value={"First Page"}
-        />
-        <button 
+        >First Page</button>
+        <button
+          className="table_button" 
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
-            value={'Previous'}
-        />
-        <button 
+        >Previous</button>
+        <button
+          className="table_button" 
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
             value={'Next'}
-        />
-        <button 
+        >Next</button>
+        <button
+          className="table_button" 
             onClick={() => table.setPageIndex(table.getPageCount() - 1)}
             disabled={!table.getCanNextPage()}
             value={'Last Page'}
-        />
+        >Last Page</button>
       </div>
     </Container>
   );

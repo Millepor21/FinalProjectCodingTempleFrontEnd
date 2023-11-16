@@ -160,3 +160,11 @@ body {
     border-radius: 17px;
     width: 50%;
 }
+
+.table_button {
+    background-color: hotpink;
+    color: aliceblue;
+    padding: 2px;
+    margin: 2px;
+    border-radius: 2px;
+}

@@ -1,4 +1,5 @@
 import { ColumnDef } from '@tanstack/react-table'
+import { DateTime } from 'luxon'
 import { Transaction } from "../types"
 import { useEffect, useMemo, useState } from "react";
 import { Table } from './Table';
@@ -7,6 +8,14 @@ import { Table } from './Table';
 export default function Transactions() {
 
     const [ transactions, setTransactions ] = useState<Transaction[]>([])
+    
+    useEffect(() => {
+        async function fetchData() {
+            const data = await getTransactions()
+            setTransactions(data)
+        }
+        fetchData()
+    }, [])
     
     const cols = useMemo<ColumnDef<Transaction>[]>(
         () => [
@@ -22,7 +31,7 @@ export default function Transactions() {
           },
           {
             header: "Date",
-            cell: (row) => row.renderValue(),
+            cell: (row) => DateTime.fromSQL(row.getValue() as string).toLocaleString(DateTime.DATE_SHORT),
             accessorKey: "date",
           },
         ],
@@ -43,14 +52,6 @@ export default function Transactions() {
         return data
     }
 
-    useEffect(() => {
-        async function fetchData() {
-            const data = await getTransactions()
-            setTransactions(data)
-        }
-        fetchData()
-    }, [])
-    
     
     return (
         <div>
