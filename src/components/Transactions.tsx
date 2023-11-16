@@ -1,10 +1,34 @@
-import { useReactTable } from '@tanstack/react-table'
+import { ColumnDef } from '@tanstack/react-table'
 import { Transaction } from "../types"
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { Table } from './Table';
 
 
 export default function Transactions() {
+
+    const [ transactions, setTransactions ] = useState<Transaction[]>([])
     
+    const cols = useMemo<ColumnDef<Transaction>[]>(
+        () => [
+          {
+            header: "Name",
+            cell: (row) => row.renderValue(),
+            accessorKey: "customer_name",
+          },
+          {
+            header: "Amount",
+            cell: (row) => row.renderValue(),
+            accessorKey: "amount",
+          },
+          {
+            header: "Date",
+            cell: (row) => row.renderValue(),
+            accessorKey: "date",
+          },
+        ],
+        []
+      );
+
     
 
     async function getTransactions():Promise<Transaction[]> {
@@ -18,10 +42,19 @@ export default function Transactions() {
         const data = await res.json();
         return data
     }
+
+    useEffect(() => {
+        async function fetchData() {
+            const data = await getTransactions()
+            setTransactions(data)
+        }
+        fetchData()
+    }, [])
     
     
     return (
         <div>
+            <Table data={transactions} columns={cols}/>
         </div> 
         )
 }

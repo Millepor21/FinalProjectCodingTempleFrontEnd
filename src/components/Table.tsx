@@ -5,8 +5,6 @@ import {
   getPaginationRowModel,
 } from "@tanstack/react-table";
 import type { ColumnDef } from "@tanstack/react-table";
-import { useMemo } from "react";
-import { Transaction } from "../types";
 import { Container } from "react-bootstrap";
 
 interface ReactTableProps<T extends object> {
@@ -25,27 +23,6 @@ export const Table = <T extends object>({
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
   });
-
-  const cols = useMemo<ColumnDef<Transaction>[]>(
-    () => [
-      {
-        header: "Name",
-        cell: (row) => row.renderValue(),
-        accessorKey: "customer_name",
-      },
-      {
-        header: "Amount",
-        cell: (row) => row.renderValue(),
-        accessorKey: "amount",
-      },
-      {
-        header: "Date",
-        cell: (row) => row.renderValue(),
-        accessorKey: "date",
-      },
-    ],
-    []
-  );
 
   return (
     <Container>
