@@ -1,15 +1,16 @@
 
-import { useEffect, useState } from "react";
-import { Manager } from "../types"
+import { useEffect, useMemo, useState } from "react";
+import { ColumnDef } from '@tanstack/react-table'
 import { useNavigate } from "react-router-dom";
+import { Manager } from "../types"
+import { Table } from "./Table";
 
 export default function ManagerAccount() {
 
-    const [ manager, setManager ] = useState<Manager>({"username": "", "password": ""})
+    const [ manager, setManager ] = useState<Manager[]>([{"username": "", "password": ""}])
     const navigate = useNavigate()
     async function fetchData() {
-        const data = await findManager();
-        setManager(data)
+        await findManager();
     }
 
     useEffect(()=>{
@@ -21,7 +22,22 @@ export default function ManagerAccount() {
         }
     )
 
-    let result:Manager[] = []
+    const cols = useMemo<ColumnDef<Manager>[]>(
+        () => [
+            {
+                header: "ID",
+                cell: (row) => row.renderValue(),
+                accessorKey: "id"
+            },
+            {
+                header: "Name",
+                cell: (row) => row.renderValue(),
+                accessorFn: (row) => `${row.first_name} ${row.last_name}`
+            },
+        ],
+        []
+    )
+
     async function findManager(): Promise<Manager> {
         console.log('in findManager');
         const res = await fetch("http://127.0.0.1:5000/manager/account", {
@@ -36,18 +52,15 @@ export default function ManagerAccount() {
             window.alert("No permissions")
         }
         const data: Manager = await res.json()
+        const dataArray: Manager[] = [data]
+        setManager(dataArray)
         return data
     
     }
-    var content;
-    if (result.length > 0){const resultFindManager: Manager[] = result
-    if(resultFindManager){
-        const yourInfo: Manager = resultFindManager[0]
-        content = <h3>{`Name: ${yourInfo.first_name} ${yourInfo.last_name}\nUsername: ${yourInfo.username}\nID: ${yourInfo.id}`}</h3>
-    }}
+    
   return (
     <div>
-        {content}
+        <Table data={manager} columns={cols} />
     </div>
   )
 }
