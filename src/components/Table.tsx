@@ -27,7 +27,7 @@ export const Table = <T extends object>({
   return (
     <Container>
       <div>
-        <table>
+        <table className="table table-striped table-dark align-middle">
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
@@ -44,7 +44,7 @@ export const Table = <T extends object>({
               </tr>
             ))}
           </thead>
-          <tbody>
+          <tbody className="table-group-divider">
             {table.getRowModel().rows.map((row) => (
               <tr key={row.id}>
                 {row.getVisibleCells().map((cell) => (

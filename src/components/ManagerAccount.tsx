@@ -1,13 +1,15 @@
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Manager } from "../types"
 import { useNavigate } from "react-router-dom";
 
 export default function ManagerAccount() {
 
+    const [ manager, setManager ] = useState<Manager>({"username": "", "password": ""})
     const navigate = useNavigate()
     async function fetchData() {
-        await findManager();
+        const data = await findManager();
+        setManager(data)
     }
 
     useEffect(()=>{
@@ -15,12 +17,12 @@ export default function ManagerAccount() {
         navigate("/")
         } else {
             fetchData();
-            }
+        }
         }
     )
 
     let result:Manager[] = []
-    async function findManager() {
+    async function findManager(): Promise<Manager> {
         console.log('in findManager');
         const res = await fetch("http://127.0.0.1:5000/manager/account", {
             method: "GET",
@@ -30,13 +32,11 @@ export default function ManagerAccount() {
             },
         })
         console.log("through request");
-        if (res.ok) {
-            const data: Manager = await res.json()
-            console.log(data);
-            result.push(data)
-        } else {
+        if (!res.ok) {
             window.alert("No permissions")
         }
+        const data: Manager = await res.json()
+        return data
     
     }
     var content;

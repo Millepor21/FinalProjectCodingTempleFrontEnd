@@ -1,14 +1,42 @@
 
 import { Container } from "react-bootstrap";
+import { ColumnDef } from "@tanstack/react-table";
 import { Employee } from "../types"
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { Table } from "./Table";
 
 export default function Employees() {
 
+    const [ employees, setEmployees ] = useState<Employee[]>([])
 
     useEffect(()=>{
-        getEmployees()
+        async function fetchData() {
+            const data = await handleEmployees()
+            setEmployees(data)
+        }
+        fetchData()
     },[])
+
+    const cols = useMemo<ColumnDef<Employee>[]>(
+        () => [
+            {
+                header: "ID",
+                cell: (row) => row.renderValue(),
+                accessorKey: "id"
+            },
+            {
+                header: "Name",
+                cell: (row) => row.renderValue(),
+                accessorFn: (row) => `${row.first_name} ${row.last_name}` 
+            },
+            {
+                header: "Manager ID",
+                cell: (row) => row.renderValue(),
+                accessorKey: "manager_id"
+            },
+        ],
+        []
+    )
 
 
     async function handleEmployees() {
@@ -21,23 +49,14 @@ export default function Employees() {
             return data
         } else window.alert("Request Failed")
     }
-    let employees:Employee[] = []
-    function getEmployees():Employee[]{
-        async()=>{
-        employees = await handleEmployees()
-        }
-    return employees}
-    const transactionList = employees.map((employee: Employee) =>(
-        <li key={employee.id}>{`Name: ${employee.first_name} ${employee.last_name} Username: ${employee.username} ID: ${employee.id} Manager Id: ${employee.manager_id}`}</li>
-    ))
+    
+    
 
     
 
     return (
         <Container className="show_employees">
-            <ul>
-                {transactionList}
-            </ul>
+            <Table data={employees} columns={cols}/>
         </Container> 
         )
 }

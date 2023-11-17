@@ -164,7 +164,8 @@ body {
 .table_button {
     background-color: hotpink;
     color: aliceblue;
-    padding: 2px;
-    margin: 2px;
-    border-radius: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 19px;
+    padding-right: 19px;
 }
