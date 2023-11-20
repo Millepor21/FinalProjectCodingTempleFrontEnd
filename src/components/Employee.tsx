@@ -56,7 +56,7 @@ export default function Employees() {
 
     return (
         employees.length>10 ? <Container className="show_employees">
-            <Table data={employees} columns={cols}/>
+            <Table data={employees} columns={cols} showNavigation={true}/>
         </Container> 
         : <Container className="show_employees">
             <Table data={employees} columns={cols}/>
