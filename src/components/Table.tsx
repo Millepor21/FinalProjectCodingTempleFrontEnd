@@ -16,6 +16,7 @@ interface ReactTableProps<T extends object> {
 export const Table = <T extends object>({
   data,
   columns,
+  showNavigation
 }: ReactTableProps<T>) => {
   const table = useReactTable({
     data,
@@ -72,30 +73,31 @@ export const Table = <T extends object>({
           </tbody>
         </table>
       </div>
-      <div>
-        <button
-          className="table_button"
-          onClick={() => table.setPageIndex(0)}
-          disabled={!table.getCanPreviousPage()}
-        >First Page</button>
-        <button
-          className="table_button" 
-            onClick={() => table.previousPage()}
+      {showNavigation ?  <div>
+          <button
+            className="table_button"
+            onClick={() => table.setPageIndex(0)}
             disabled={!table.getCanPreviousPage()}
-        >Previous</button>
-        <button
-          className="table_button" 
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-            value={'Next'}
-        >Next</button>
-        <button
-          className="table_button" 
-            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-            disabled={!table.getCanNextPage()}
-            value={'Last Page'}
-        >Last Page</button>
-      </div>
+          >First Page</button>
+          <button
+            className="table_button" 
+              onClick={() => table.previousPage()}
+              disabled={!table.getCanPreviousPage()}
+          >Previous</button>
+          <button
+            className="table_button" 
+              onClick={() => table.nextPage()}
+              disabled={!table.getCanNextPage()}
+              value={'Next'}
+          >Next</button>
+          <button
+            className="table_button" 
+              onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+              disabled={!table.getCanNextPage()}
+              value={'Last Page'}
+          >Last Page</button>
+        </div>
+: null}
     </Container>
   );
 };

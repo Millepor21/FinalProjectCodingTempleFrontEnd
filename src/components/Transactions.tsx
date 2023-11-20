@@ -60,10 +60,14 @@ export default function Transactions() {
     const data = await res.json();
     return data;
   }
-
+  
   return (
-    <div>
-      <Table data={transactions} columns={cols} />
+   transactions.length >10 ? <div>
+      <Table data={transactions} columns={cols} showNavigation={true}/>
     </div>
+  :
+  <div>
+    <Table data={transactions} columns={cols}/>
+  </div>
   );
 }

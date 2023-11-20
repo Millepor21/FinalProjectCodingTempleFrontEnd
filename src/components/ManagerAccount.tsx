@@ -17,11 +17,13 @@ export default function ManagerAccount() {
         if(!localStorage.getItem("token")){
         navigate("/")
         } else {
-            fetchData();
+            waitForData();
         }
-        }
+        },[]
     )
-
+        async function waitForData(){
+            await fetchData()
+        }
     const cols = useMemo<ColumnDef<Manager>[]>(
         () => [
             {
@@ -34,6 +36,11 @@ export default function ManagerAccount() {
                 cell: (row) => row.renderValue(),
                 accessorFn: (row) => `${row.first_name} ${row.last_name}`
             },
+            {
+                header: "Username",
+                cell: (row) => row.renderValue(),
+                accessorKey: "username"
+            }
         ],
         []
     )
@@ -53,6 +60,7 @@ export default function ManagerAccount() {
         }
         const data: Manager = await res.json()
         const dataArray: Manager[] = [data]
+        console.log(dataArray);
         setManager(dataArray)
         return data
     
