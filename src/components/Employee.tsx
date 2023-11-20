@@ -40,7 +40,7 @@ export default function Employees() {
 
 
     async function handleEmployees() {
-        const res = await fetch("http://127.0.0.1:5000/employee", {
+        const res = await fetch("https://manager-dash-uof4.onrender.com/employee", {
             method : "GET",
             headers : {"Content-Type": "application/json"},
         })

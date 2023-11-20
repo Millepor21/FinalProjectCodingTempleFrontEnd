@@ -9,7 +9,7 @@ export default function Delete() {
 
   async function handleDeleteData(e: FormEvent<HTMLElement>) {
     e.preventDefault();
-    const res = await fetch("http://127.0.0.1:5000/manager", {
+    const res = await fetch("https://manager-dash-uof4.onrender.com/manager", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

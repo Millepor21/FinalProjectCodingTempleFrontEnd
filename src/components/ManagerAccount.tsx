@@ -47,7 +47,7 @@ export default function ManagerAccount() {
 
     async function findManager(): Promise<Manager> {
         console.log('in findManager');
-        const res = await fetch("http://127.0.0.1:5000/manager/account", {
+        const res = await fetch("https://manager-dash-uof4.onrender.com/manager/account", {
             method: "GET",
             headers: { 
                 "Content-Type": "application/json",

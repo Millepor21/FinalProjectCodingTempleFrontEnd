@@ -50,7 +50,7 @@ export default function Transactions() {
   );
 
   async function getTransactions(): Promise<Transaction[]> {
-    const res = await fetch("http://127.0.0.1:5000/transaction", {
+    const res = await fetch("https://manager-dash-uof4.onrender.com/transaction", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });

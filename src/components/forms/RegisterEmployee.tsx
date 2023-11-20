@@ -37,7 +37,7 @@ export default function Register() {
   async function registerEmployee(registrationData: Partial<Employee>) {
     console.log("in registration fetch");
     console.log("Request Data:", JSON.stringify(registrationData));
-    const res = await fetch("http://127.0.0.1:5000/register_employee", {
+    const res = await fetch("https://manager-dash-uof4.onrender.com/register_employee", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(registrationData),

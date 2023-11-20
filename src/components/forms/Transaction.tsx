@@ -21,7 +21,7 @@ export default function CreateTransaction() {
   }
 
   async function createTransaction(transactionData: Transaction) {
-    const res = await fetch("http://127.0.0.1:5000/transaction", {
+    const res = await fetch("https://manager-dash-uof4.onrender.com/transaction", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
