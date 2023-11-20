@@ -66,13 +66,13 @@ export default function Edit() {
       <label htmlFor="password">Password</label>
       <input type="text" id="password" ref={passwordField} required/><br/>
       <label htmlFor="new_username">New Username</label>
-      <input type="text" id="new_username" ref={newUsernameField} /><br/>
+      <input type="text" id="new_username" ref={newUsernameField} required/><br/>
       <label htmlFor="new_password">New Password</label>
-      <input type="text" id="new_password" ref={newPasswordField} /><br/>
+      <input type="text" id="new_password" ref={newPasswordField} required/><br/>
       <label htmlFor="first_name">First Name</label>
-      <input type="text" id="first_name" ref={fNameField} /><br/>
+      <input type="text" id="first_name" ref={fNameField} required/><br/>
       <label htmlFor="last_name">Last Name</label>
-      <input type="text" id="last_name" ref={lNameField} /><br/><br/>
+      <input type="text" id="last_name" ref={lNameField} required/><br/><br/>
       <input type="submit" value="Edit" />
     </form>
   );
