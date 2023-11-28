@@ -5,7 +5,7 @@ import { Employee } from "../types"
 import { useEffect, useMemo, useState } from "react";
 import { Table } from "./Table";
 
-export default function Employees() {
+export default function EmployeeTable() {
 
     const [ employees, setEmployees ] = useState<Employee[]>([])
 

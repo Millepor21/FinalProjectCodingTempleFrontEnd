@@ -14,7 +14,7 @@ import ManagerAccount from "./components/ManagerAccount";
 import Dashboard from "./components/Dashboard";
 import EditPage from "./pages/EditPage";
 import TransactionPage from "./pages/TransactionPage";
-import Employee from "./components/Employee";
+import EmployeePage from "./pages/EmployeePage";
 
 export default function App() {
   
@@ -30,7 +30,7 @@ export default function App() {
           <Routes>
             <Route path="/logout" element={<LogoutPage />} />
             <Route path="/transaction" element={<TransactionPage />} />
-            <Route path="/employee" element={<Employee />} />
+            <Route path="/employee" element={<EmployeePage />} />
             <Route path="/manager" element={<ManagerAccount />} />
             <Route path="/edit" element={<EditPage />} />
             <Route path="/register" element={<RegisterPage />} />
