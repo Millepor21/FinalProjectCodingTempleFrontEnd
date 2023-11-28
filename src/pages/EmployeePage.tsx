@@ -11,7 +11,7 @@ export default function EmployeePage() {
         if(!localStorage.getItem("token")){
         navigate("/")
         }
-    })
+    },[])
 
     const chooseList = () => {
         makeChoice("list")

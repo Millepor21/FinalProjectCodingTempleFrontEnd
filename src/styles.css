@@ -169,3 +169,14 @@ body {
     padding-left: 19px;
     padding-right: 19px;
 }
+
+.delete_container {
+    display: grid;
+}
+
+.delete_button {
+    background-color: hotpink;
+    color: aliceblue;
+    padding: 12px;
+    border-radius: 17px;
+}
