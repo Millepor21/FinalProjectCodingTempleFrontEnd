@@ -1,9 +1,10 @@
 
-import { useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { ColumnDef } from '@tanstack/react-table'
 import { useNavigate } from "react-router-dom";
 import { Manager } from "../types"
 import { Table } from "./Table";
+import { UserContext } from "../contexts/UserProvider";
 
 export default function ManagerAccount() {
 
@@ -12,6 +13,7 @@ export default function ManagerAccount() {
     async function fetchData() {
         await findManager();
     }
+    const { user } = useContext(UserContext)
 
     useEffect(()=>{
         if(!localStorage.getItem("token")){
@@ -51,7 +53,7 @@ export default function ManagerAccount() {
             method: "GET",
             headers: { 
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${localStorage.getItem("token")}`,
+                "Authorization": `Bearer ${user.token}`,
             },
         })
         console.log("through request");

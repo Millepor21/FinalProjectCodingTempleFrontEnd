@@ -6,9 +6,11 @@ export default function EmployeeOrManager() {
     const [ state, setState ] = useState("neither")
 
     const setManager = () => {
+        console.log(state);
         setState("manager")
     }
     const setEmployee = () => {
+        console.log(state);
         setState("employee")
     }
 

@@ -1,10 +1,12 @@
-import { useRef, FormEvent } from "react";
+import { useRef, FormEvent, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { UpdateUser } from "../../types";
+import { UserContext } from "../../contexts/UserProvider";
 
 export default function Edit() {
   const navigate = useNavigate();
+  const { user } = useContext(UserContext)
 
   const usernameField = useRef<HTMLInputElement>(null);
   const passwordField = useRef<HTMLInputElement>(null);
@@ -37,7 +39,7 @@ export default function Edit() {
       method: "PUT",
       headers: { 
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("token")}`
+        "Authorization": `Bearer ${user.token}`
      },
       body: JSON.stringify(editData),
     });

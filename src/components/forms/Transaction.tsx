@@ -1,10 +1,12 @@
-import { FormEvent, useRef } from "react";
+import { FormEvent, useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Transaction } from "../../types";
+import { UserContext } from "../../contexts/UserProvider";
 
 export default function CreateTransaction() {
   const navigate = useNavigate();
+  const { user } = useContext(UserContext)
 
   const amountField = useRef<HTMLInputElement>(null);
   const customerNameField = useRef<HTMLInputElement>(null);
@@ -25,7 +27,7 @@ export default function CreateTransaction() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")!}`,
+        Authorization: `Bearer ${user.token}`,
       },
       body: JSON.stringify(transactionData),
     });

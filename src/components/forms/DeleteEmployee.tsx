@@ -2,16 +2,16 @@ import { useRef, FormEvent, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/UserProvider";
 
-export default function Delete() {
+export default function DeleteEmployee() {
   const navigate = useNavigate();
-  const { user } = useContext(UserContext)
+  const { user } = useContext(UserContext);
 
   const usernameField = useRef<HTMLInputElement>(null);
   const passwordField = useRef<HTMLInputElement>(null);
 
   async function handleDeleteData(e: FormEvent<HTMLElement>) {
     e.preventDefault();
-    const res = await fetch("https://manager-dash-uof4.onrender.com/manager", {
+    const res = await fetch("https://manager-dash-uof4.onrender.com/employee", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,6 @@ export default function Delete() {
       navigate("/logout");
     } else window.alert("Delete Failed");
   }
-
   return (
     <form onSubmit={handleDeleteData}>
       <label htmlFor="username">Username</label>
@@ -37,7 +36,7 @@ export default function Delete() {
       <br />
       <label htmlFor="password">Password</label>
       <br />
-      <input type="password" name="password" ref={passwordField} required />
+      <input type="text" name="password" ref={passwordField} required />
       <br />
       <input type="submit" value="Delete" />
     </form>
