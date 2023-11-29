@@ -21,9 +21,19 @@ export default function DeletePage() {
   };
   let content;
   if (chosenPage === "employee") {
-    content = <DeleteEmployee />;
+    content = (
+    <Container className="delete_employee">
+        <h3>Employee:</h3><br />
+        <DeleteEmployee />
+    </Container>
+    );
   } else if (chosenPage === "manager") {
-    content = <Delete />;
+    content = (
+    <Container className="delete_manager">
+        <h3>Manager:</h3><br />
+        <Delete />
+    </Container>    
+    );
   } else content = null;
 
   return (

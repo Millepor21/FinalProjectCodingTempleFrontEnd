@@ -23,15 +23,17 @@ export default function EmployeePage() {
         content = (
             <Employees employeeId={employeeIdField.current!.value}/>
         )
-    } else content = null
-  return (
-    <Container>
-        <EmployeeTable />
+    } else content = (
         <form onSubmit={chooseOne}>
+            <br /><br />
             <label htmlFor="employee_id">Employee ID</label><br />
             <input type="text" name="employee_id" ref={employeeIdField} required/><br />
             <input type="submit" value="Search" />
         </form>
+    )
+  return (
+    <Container className="employee_container">
+        <EmployeeTable />
         {content}
     </Container>
   )

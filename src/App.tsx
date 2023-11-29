@@ -15,6 +15,8 @@ import Dashboard from "./components/Dashboard";
 import EditPage from "./pages/EditPage";
 import TransactionPage from "./pages/TransactionPage";
 import EmployeePage from "./pages/EmployeePage";
+import DeletePage from "./pages/DeletePage";
+import SideBar from "./components/SideBar";
 
 export default function App() {
   
@@ -25,20 +27,30 @@ export default function App() {
 
   return (
     <BrowserRouter>
-        <Container>
-          <Header/>  
-          <Routes>
-            <Route path="/logout" element={<LogoutPage />} />
-            <Route path="/transaction" element={<TransactionPage />} />
-            <Route path="/employee" element={<EmployeePage />} />
-            <Route path="/manager" element={<ManagerAccount />} />
-            <Route path="/edit" element={<EditPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/" element={<Dashboard />} />
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-        </Container>
-    </BrowserRouter>
+  <Container fluid className="vstack">
+    <div className="header-container">
+      <Header />
+    </div>
+    <Container className="hstack">
+      <div className="sidebar-container">
+        <SideBar />
+      </div>
+      <div className="content-container">
+        <Routes>
+          <Route path="/logout" element={<LogoutPage />} />
+          <Route path="/transaction" element={<TransactionPage />} />
+          <Route path="/employee" element={<EmployeePage />} />
+          <Route path="/manager" element={<ManagerAccount />} />
+          <Route path="/edit" element={<EditPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/delete" element={<DeletePage />} />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </div>
+    </Container>
+  </Container>
+</BrowserRouter>
   )
 }

@@ -28,6 +28,7 @@ export default function EditPage() {
     if (state === "manager") {
         content = (
         <Container className="edit_manager">
+            <h3>Manager:</h3><br />
             <Edit/>
         </Container>
         
@@ -35,6 +36,7 @@ export default function EditPage() {
     } else if (state === "employee") {
         content = (
         <Container className="edit_employee">
+            <h3>Employee:</h3><br />
             <EditEmployee/>
         </Container>
         )

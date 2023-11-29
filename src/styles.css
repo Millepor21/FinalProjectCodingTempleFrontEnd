@@ -104,12 +104,18 @@ body {
     align-content: center;
 }
 .edit_employee {
-    max-width: 50%;
-    margin-left: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 }
 .edit_manager {
-    max-width: 50%;
-    margin-left: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 }
 .transaction_choice {
     display: flex;
@@ -180,3 +186,53 @@ body {
     padding: 12px;
     border-radius: 17px;
 }
+
+.delete_manager {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.delete_employee {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.employee_container {
+    display: flex;
+}
+
+.vstack {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Adjust the height as needed */
+  }
+  
+  .hstack {
+    display: flex;
+    margin-left: 0px;
+  }
+  
+  .sidebar-container {
+    justify-self: start;
+    align-self: start;
+    width: 250px; /* Adjust the width as needed */
+    flex-shrink: 0;
+  }
+  
+  .content-container {
+    flex-grow: 1;
+  }
+  
+  .sidebar {
+    height: 100%; /* Set the sidebar height to 100% of the parent container */
+    max-width: 125px;
+    overflow-y: auto;
+    border-right: 1px solid hotpink;
+    color: aliceblue;
+  }
